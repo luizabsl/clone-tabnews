@@ -1,6 +1,10 @@
 // /api/status
+import database from "../../../../infra/database.js";
 
-function status(request, response) {
+async function status(request, response) {
+  console.log(database);
+  const result = await database.query("SELECT 1 + 1 AS SOMA;");
+  console.log(result.rows);
   response.status(200).json({ text: "Envio de status code" }); //assume charset como utf-8
 }
 
